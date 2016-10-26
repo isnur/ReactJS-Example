@@ -1,0 +1,32 @@
+class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: 50
+    };
+  }
+  render(){
+    var { name,  age, pic } = this.props;
+    var { height } = this.state;
+    return (
+      <div className="profile-box">
+        <h2>{name}</h2>
+        <h4>{age}</h4>
+        <img src={pic} height={height} />
+        <br />
+        <button onClick={this.zoomOut.bind(this)}>-</button>
+        <button onClick={this.zoomIn.bind(this)}>+</button>
+      </div>
+    );
+  }
+  zoomIn(){
+    console.log(this);
+    this.setState({height: this.state.height + 20});
+  }
+  zoomOut(){
+    console.log(this);
+    this.setState({height: this.state.height - 20});
+  }
+}
+
+React.render(<Profile name="Isnur" age="25" pic="https://facebook.github.io/react/img/logo.svg"/>, document.getElementById('app'));
